@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using GraphTutorial
+
+<div class="jumbotron">
+   
+    @if (User.Identity.IsAuthenticated)
+    {
+<div>
+    <center>
+        <h4>Welcome @User.GetUserGraphDisplayName()!</h4>
+        <p>This Is your Dashboard Area to Manage Your Stuffs.</p>
+    </center>
+</div>
+    <div>
+        <p>@User.GetUserGraphEmail()</p>
+       <div>
+           <img src=" @User.GetUserGraphPhoto()" height="100"width="100"/>    
+       </div>
+    </div>
+
+        
+    }
+    else
+    {
+        <a class="btn btn-primary btn-large" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">Click here to sign in</a>
+    }
+</div>
